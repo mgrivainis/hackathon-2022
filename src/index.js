@@ -1,4 +1,5 @@
-import css from "./style.css";
+import "./style.css";
+import { buildPlot } from "./js/plotting";
 
 function myComponent() {
   const divElement = document.createElement("div");
@@ -9,3 +10,5 @@ function myComponent() {
   return divElement;
 }
 document.body.appendChild(myComponent());
+
+buildPlot();
