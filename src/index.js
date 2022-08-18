@@ -1,6 +1,7 @@
 import zipLatLongCSV from "./data/zip-lat-long.csv";
 import "./style.css";
 import { buildPlot } from "./js/plotting";
+import { getBreezometerData } from "./js/breezometer";
 
 const zipLatLongMap = {};
 
@@ -25,7 +26,6 @@ function zipCodeInputComponent(onValidZipCode) {
     if (zipCodeExp.test(value)) {
       onValidZipCode(value);
     }
-
   });
 
   containerElement.appendChild(input);
@@ -33,11 +33,18 @@ function zipCodeInputComponent(onValidZipCode) {
   return containerElement;
 }
 
-function zipToLatLong (zip) {
-  const latLong = zipLatLongMap[zip];
-  console.log(latLong);
+function getData (zip) {
+  const [lat, long] = zipLatLongMap[zip];
+
+  getBreezometerData(lat, long).then(
+    (result) => {
+      console.log(result);
+    },
+    () => {
+      console.log('error');
+    });
 }
 
-document.body.appendChild(zipCodeInputComponent(zipToLatLong));
+document.body.appendChild(zipCodeInputComponent(getData));
 
 buildPlot();
