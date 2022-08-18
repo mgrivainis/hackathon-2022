@@ -23,6 +23,15 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.csv$/,
+        loader: 'csv-loader',
+        options: {
+          dynamicTyping: false,
+          header: true,
+          skipEmptyLines: true
+        }
+      }
     ],
   },
 };
