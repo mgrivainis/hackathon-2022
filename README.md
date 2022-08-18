@@ -3,7 +3,7 @@
 ## Setup
 
 1. clone the repository
-2. run `npm init`
+2. run `npm install`
 
 ### For development
 
