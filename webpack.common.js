@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -7,6 +8,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "2022 - Hackathon",
       template: "./src/index.html",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "./src/data/", to: "data" }],
     }),
   ],
   output: {
@@ -18,10 +22,6 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.json$/i,
-        loader: "file-loader?name=[name].json",
       },
     ],
   },
