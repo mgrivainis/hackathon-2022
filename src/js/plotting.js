@@ -23,7 +23,7 @@ export function buildPlot() {
     height: 300,
   });
 
-  document.body.appendChild(result);
+  document.querySelector(".plot-today").appendChild(result);
 
   var format = d3.timeParse("%Y-%m-%d");
 
@@ -42,8 +42,6 @@ export function buildPlot() {
     );
   });
 
-  console.log(historyData);
-
   const historic = Calendar(historyData, {
     x: (d) => d.date,
     y: (d) => d.value,
@@ -55,7 +53,7 @@ export function buildPlot() {
       (d) => d.name
     ),
   });
-  document.body.appendChild(historic);
+  document.querySelector(".plot-three-day").appendChild(historic);
 
   const todayPlants = map(plants, (v, k) => {
     const result = {};
@@ -63,5 +61,4 @@ export function buildPlot() {
     result.value = v.index.value;
     return result;
   }).filter((dataPoint) => dataPoint.value !== null);
-  console.log(todayPlants);
 }

@@ -23,7 +23,10 @@ export function Calendar(
     xRange = [marginLeft, width - marginRight], // [left, right]    weekday = "monday", // either: weekday, sunday, or monday
     yRange = [height - marginBottom, marginTop], // [bottom, top]
     yFormat, // format specifier string for values (in the title)
-    colors = d3.interpolatePiYG,
+    colors = d3
+      .scaleSequential()
+      .interpolator(d3.interpolateSpectral)
+      .domain([1, 0]),
   } = {}
 ) {
   // Compute values.
@@ -76,7 +79,10 @@ export function Calendar(
     .attr("height", cellSize - 1)
     .attr("x", (i) => xScale(X[i]))
     .attr("y", (i) => yScale(Z[i]) - cellSize / 2)
-    .attr("fill", (i) => color(Y[i]));
+    .attr("fill", (i) => {
+      console.log(Y[i]);
+      return color(Y[i]);
+    });
 
   return Object.assign(svg.node(), { scales: { color } });
 }

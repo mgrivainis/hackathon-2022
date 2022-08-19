@@ -11,16 +11,16 @@ zipLatLongCSV.forEach((item) => {
 
 function zipCodeInputComponent(onValidZipCode) {
   const containerElement = document.createElement("div");
-  containerElement.classList.add('zipcode');
+  containerElement.classList.add("zipcode");
 
   const input = document.createElement("input");
-  input.classList.add('zipcode__input');
-  input.placeholder = 'Enter a Zipcode';
+  input.classList.add("zipcode__input");
+  input.placeholder = "Enter a Zipcode";
   input.maxLength = 5;
 
   const zipCodeExp = /^\d{5}$/;
 
-  input.addEventListener('input', (e) => {
+  input.addEventListener("input", (e) => {
     const value = input.value.trim();
 
     if (zipCodeExp.test(value)) {
@@ -33,7 +33,7 @@ function zipCodeInputComponent(onValidZipCode) {
   return containerElement;
 }
 
-function getData (zip) {
+function getData(zip) {
   const [lat, long] = zipLatLongMap[zip];
 
   getBreezometerData(lat, long).then(
@@ -41,10 +41,11 @@ function getData (zip) {
       console.log(result);
     },
     () => {
-      console.log('error');
-    });
+      console.log("error");
+    }
+  );
 }
 
-document.body.appendChild(zipCodeInputComponent(getData));
+document.querySelector(".zip").appendChild(zipCodeInputComponent(getData));
 
 buildPlot();
