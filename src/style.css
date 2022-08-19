@@ -1,3 +1,40 @@
-.red {
-  color: red;
+body {
+  background-color: rgb(230, 230, 230);
+}
+
+.main-panel {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+}
+
+.embed {
+  display: block;
+  width: 100%;
+  color: green;
+}
+
+.zip {
+  width: 300px;
+}
+
+.zipcode__input {
+  width: 95%;
+  padding: 5px;
+  height: 20px;
+}
+
+.data-panel {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  border-radius: 2px;
+  background-color: white;
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 3px 3px 15px #666;
 }
